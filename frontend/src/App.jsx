@@ -8,6 +8,7 @@ import Verify from './pages/Verify'
 import Navbar from './Components/Navbar'
 import ProtectedRoute from './Components/ProtectedRoute'
 import ForgotPassword from './pages/ForgotPassword'
+import VerifyOTP from './pages/VerifyOTP'
 
 const router =createBrowserRouter([
   {
@@ -39,7 +40,12 @@ const router =createBrowserRouter([
   {
     path: '/forgot-password',
     element: <ForgotPassword/>
+  },
+   {
+    path: '/verify-otp/:email',
+    element: <VerifyOTP/>
   }
+
 
 ])
 const App = () => {
