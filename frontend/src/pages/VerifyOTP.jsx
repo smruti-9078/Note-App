@@ -1,12 +1,12 @@
 import { Alert, AlertDescription } from '@/Components/ui/alert'
 import { Button } from '@/Components/ui/button'
-import { Card, CardTitle,CardHeader,CardDescription, CardContent } from '@/Components/ui/card'
+import { Card, CardTitle,CardHeader,CardDescription, CardContent, CardFooter } from '@/Components/ui/card'
 import axios from 'axios'
 import { CheckCircle, Loader2, RotateCcw } from 'lucide-react'
 import { Input } from '@/Components/ui/input'
 import React, { useRef } from 'react'
 import { useState} from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 const VerifyOTP = () => {
     const [isVerified] = useState(false)
     const [error, setError] = useState(" ")  
@@ -41,7 +41,7 @@ const VerifyOTP = () => {
             })
             setSuccessMessage(response.data.message)
             setTimeout(()=>{
-                navigate(`/reset-password/${email}`)
+                navigate(`/change-password/${email}`)
 
             },2000)
             
@@ -77,7 +77,8 @@ const VerifyOTP = () => {
                             {
                                 isVerified ? "Code verified successfully!" : "Enter the 6-digit code sent to your email"
                             }
-                        </CardDescription>
+                        </CardDescription> 
+                        
                     </CardHeader>
                     <CardContent className='space-y-6'>
                         {
@@ -147,8 +148,17 @@ const VerifyOTP = () => {
 
 
                     </CardContent>
+                    <CardFooter className='flex justify-center'>
+                        <p className='text-sm text-muted-foreground'>
+                            wrong email?{" "}
+                            <Link to={'/forgot-password'} className='text-slate-400 hover:underline font-medium'>Go back</Link>
+                        </p>
+                    </CardFooter>
 
                 </Card>
+                <div className='text-center text-xs text-muted-foreground'>
+                    <p>For testing purpose, use code:<span className='font-medium font-italic'>098765</span></p>
+                </div>
             </div>
         </div>
       
