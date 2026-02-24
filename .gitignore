@@ -17,3 +17,8 @@ Thumbs.db
 *.swp
 *.swo
 *.env
+
+# Allow tracking of necessary backend files
+!Backend/.env
+!Backend/package-lock.json
+!Backend/node_modules/
